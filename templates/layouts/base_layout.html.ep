@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= title %></title>
+    %= stylesheet '/base.css'
+    %= javascript '/base.js'
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <script language="javascript" type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+        /* Liste der Parteitage auslesen: */
+        fillInitSelect();
+    });
+    </script>
+  </head>
+  <body>
+    <header><%= title %> - viel weniger schlecht.&trade;</header>
+    <main>
+      <article><%= content %></article>
+    </main>
+    <footer>Beschwert euch bei <a href="https://twitter.com/tux0r" target="_blank">@tux0r</a>.</footer>
+  </body>
+</html>

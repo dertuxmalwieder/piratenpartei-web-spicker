@@ -1,0 +1,16 @@
+<div id="content_header"><a href="<%= $origlink %>" target="_blank" title="Antrag im Antragsportal anzeigen">Antrag <%= $antragsid %></a>: <%= $title %></div>
+
+<div id="content_antragsteller">
+Antragsteller:
+%= content 'author'
+</div>
+
+<div id="content_antrag">
+%= content 'antrag'
+</div>
+
+<div id="content_begruendung">
+<p>Begründung:</p>
+
+%= content 'begruendung'
+</div>

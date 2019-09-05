@@ -41,6 +41,11 @@ function listAntraege() {
         { method: "POST" })
     .then(res => res.json())
     .then(data => {
+        // Anträge zurücksetzen vorm Neubefüllen:
+        while (selAntrag.firstChild) {
+            selAntrag.removeChild(selAntrag.firstChild);
+        }
+
         let dummyoption = document.createElement("option");
         dummyoption.value = "dummy";
         dummyoption.innerHTML = "- bitte auswählen -";

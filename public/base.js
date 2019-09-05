@@ -1,6 +1,6 @@
 function panic(str) {
     // AAAAAAAAAAAHHHH!
-    alert("@tux0r hat einen Fehler gemacht!... " + str);
+    console.log("@tux0r hat einen Fehler gemacht!... " + str);
 }
 
 function fillInitSelect() {

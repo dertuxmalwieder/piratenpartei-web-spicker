@@ -73,7 +73,11 @@ post '/Parteitag/:parteitag/Antrag/:antrag' => sub {
 	    my $antragstext = $antrag->{text};
 	    $antragstext =~ s/<a href="(\\)?\//<a href="https:\/\/wiki.piratenpartei.de\//g;
 	    
-	    $c->content_for(author => $antrag->{author});
+	    # Der Link zum Autor ist vermutlich auch falsch.
+	    my $author = $antrag->{author};
+	    $author =~ s/<a href="(\/)?Benutzer:/<a target="_blank" href="https:\/\/wiki.piratenpartei.de\/Benutzer:/g;
+	    
+	    $c->content_for(author => $author);
 	    $c->stash(origlink => $antrag->{url});
 	    $c->stash(antragsid => $antrag->{id});
 	    $c->stash(title => $antrag->{title});

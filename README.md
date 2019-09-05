@@ -1,6 +1,6 @@
 # Spickerrrrrretc.
 
-* Ein portables Web-UI für den [Spickerrr](https://spickerrr.piraten-tools.de).
+* Ein portables Web-UI fÃ¼r den [Spickerrr](https://spickerrr.piraten-tools.de).
 
 ## Runterladen
 

@@ -6,7 +6,6 @@ use strict;
 use warnings;
 use utf8;
 
-use Mojo::JSON qw(decode_json);
 use Mojo::UserAgent;
 use Mojolicious::Lite;
 
@@ -40,7 +39,7 @@ post '/Parteitag/:parteitag' => sub {
     if ($parteitag ne 'dummy') {    
         my $ua  = Mojo::UserAgent->new;
         my $url = "${APIURL}book/${parteitag}/motions";
-	    
+        
         $c->render(json => $ua->get($url)->result->json);
     }
 };
@@ -67,23 +66,23 @@ post '/Parteitag/:parteitag/Antrag/:antrag' => sub {
         
         # Der gesuchte Antrag steht jetzt in $antraege->[$needle_location].
         # Aufbereiten für die Anzeige:
-	    my $antrag = $antraege->[$needle_location];
-	    
-	    # Im Antragstext könnten Wikilinks drin sein. Bäh ... :-)
-	    my $antragstext = $antrag->{text};
-	    $antragstext =~ s/<a href="(\\)?\//<a href="https:\/\/wiki.piratenpartei.de\//g;
-	    
-	    # Der Link zum Autor ist vermutlich auch falsch.
-	    my $author = $antrag->{author};
-	    $author =~ s/<a href="(\/)?Benutzer:/<a target="_blank" href="https:\/\/wiki.piratenpartei.de\/Benutzer:/g;
-	    
-	    $c->content_for(author => $author);
-	    $c->stash(origlink => $antrag->{url});
-	    $c->stash(antragsid => $antrag->{id});
-	    $c->stash(title => $antrag->{title});
-	    $c->content_for(antrag => $antragstext);
-	    $c->content_for(begruendung => $antrag->{remarks});
-	    
+        my $antrag = $antraege->[$needle_location];
+        
+        # Im Antragstext könnten Wikilinks drin sein. Bäh ... :-)
+        my $antragstext = $antrag->{text};
+        $antragstext =~ s/<a href="(\\)?\//<a href="https:\/\/wiki.piratenpartei.de\//g;
+        
+        # Der Link zum Autor ist vermutlich auch falsch.
+        my $author = $antrag->{author};
+        $author =~ s/<a href="(\/)?Benutzer:/<a target="_blank" href="https:\/\/wiki.piratenpartei.de\/Benutzer:/g;
+        
+        $c->content_for(author => $author);
+        $c->stash(origlink => $antrag->{url});
+        $c->stash(antragsid => $antrag->{id});
+        $c->stash(title => $antrag->{title});
+        $c->content_for(antrag => $antragstext);
+        $c->content_for(begruendung => $antrag->{remarks});
+        
         $c->render(template => 'antrag');
     }
 };

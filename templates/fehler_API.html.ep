@@ -1,0 +1,10 @@
+<%#
+  # Dieses Template wird inline gerendert.
+  # Kein Layout notwendig.
+%>
+
+<b>Fehler beim Abrufen der Anträge - <a href="<%= $APIURL %>" target="_blank">API</a> offline?</b>
+
+<br /><br />
+
+<em>Details:</em> <%= $errortext %>

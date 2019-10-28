@@ -17,8 +17,18 @@ our $APIURL = 'https://spickerrr.piraten-tools.de/api/';
 
 get '/' => sub {
     # Übersichtsseite:
-    my $c = shift;
+    my $c = shift;    
     $c->render(template => 'start');
+};
+
+post '/APIErrorHandler/:errorString' => sub {
+    # Fehlerbehandlung: Wirf HTML aus.
+    my $c = shift;
+    
+    $c->stash(APIURL => $APIURL);
+    $c->stash(errortext => $c->stash('errorString'));
+    
+    $c->render(template => 'fehler_API');
 };
 
 post '/Parteitage' => sub {

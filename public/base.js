@@ -3,6 +3,16 @@ function panic(str) {
     console.log("@tux0r hat einen Fehler gemacht!... " + str);
 }
 
+function handleAPIError(str) {
+    // Zeigt ein Fehler-DIV bei Verbindungsproblemen mit dem API an.
+    fetch("APIErrorHandler/" + str, { method: "POST" })
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("errorDiv").innerHTML = data;
+    })
+    .catch(error => panic(error));
+}
+
 function fillInitSelect() {
     // Füllt die Parteitagsselectbox zu Beginn.
     let selParteitag = document.getElementById("parteitage");
@@ -16,6 +26,8 @@ function fillInitSelect() {
         dummyoption.innerHTML = "- bitte auswählen -";
         selParteitag.appendChild(dummyoption);
         
+        document.getElementById("errorDiv").innerHTML = "";
+        
         if (data["data"] !== undefined && data["data"].length > 0) {
             data["data"].forEach(parteitag => {
                 /* parteitag["Key"] und parteitag["Name"] in Selectbox
@@ -28,8 +40,11 @@ function fillInitSelect() {
             
             selParteitag.disabled = false;
         }
+        else {
+		    document.getElementById("inhalt").innerHTML = "Zurzeit sind keine Anträge vorhanden.";
+		}
     })
-    .catch(error => panic(error));
+    .catch(error => handleAPIError(error));
 }
 
 function listAntraege() {

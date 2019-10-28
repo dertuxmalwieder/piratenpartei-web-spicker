@@ -4,4 +4,5 @@
 <label for="parteitage">Parteitag:</label> <select name="parteitage" id="parteitage" disabled="disabled" onchange="listAntraege()"></select><br />
 <label for="antraege">Antrag:</label> <select name="antraege" id="antraege" disabled="disabled" onchange="zeigeAntrag()"></select><br />
 <br />
+<div id="errorDiv"></div>
 <div id="inhalt"></div>

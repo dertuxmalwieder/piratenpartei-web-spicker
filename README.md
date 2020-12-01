@@ -2,6 +2,10 @@
 
 * Ein portables Web-UI für den [Spickerrr](https://spickerrr.piraten-tools.de).
 
+## Demo
+
+* [spicker.piraten-bs.de](https://spicker.piraten-bs.de)
+
 ## Runterladen
 
 * Dieses Tool wird auf [code.rosaelefanten.org](https://code.rosaelefanten.org/web-spicker) gehostet.
